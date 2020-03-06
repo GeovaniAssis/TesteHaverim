@@ -1,0 +1,654 @@
+/***************************************************************************
+                                Descricao
+****************************************************************************
+    Theme Name: Tecnocal
+    Theme URI:
+    Author: Geovani Assis <geovani.assisa@summercomunicacao.com.br>
+    Author URI: http://www.summercomunicacao.com.br/
+    Description: 
+    Version: 1.0
+    License: 
+    License URI: 
+    Tags:
+    Text Domain: 
+***************************************************************************/
+
+/*************************** All */
+
+    html { 
+        height: 100%;
+        overflow-x: hidden;
+    }
+    body{
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%2350baea' fill-opacity='1'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    * { 
+        margin: 0;
+        transition: ease .8s all;
+    }
+
+    form label, p{
+        cursor: pointer;
+        transition: none !important;
+    }
+
+    a:hover,
+    a:focus,
+    a:visited,
+    input:hover,
+    input:focus,
+    input:visited,
+    input:active {
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .bc--banco{ background-color: #fff; }
+    .bc--azul-escuro{ background-color: #032c42; }
+
+    .sombra{ box-shadow: 0 0 20px #0000009c; }
+
+    .pd-top--47{ padding-top: 47px; }
+    .pd-bot--50{ padding-bottom: 50px; }
+    .pd--0{ padding: 0 !important; }
+
+    .wd--100{ width: 100% !important; }
+
+    .trans-none{transition: none !important;}
+
+    .txt-center{text-align: center !important;}
+
+    .dpy--none{ display: none; }
+
+    .btn-navegacao button{
+        min-width: 200px;
+        background-color: #032c42;
+        color: white;
+        font-style: inherit;
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        margin: 10px 0;
+        box-shadow: inset 0 0 20px #50baeac7;
+        transition: ease .8s all;
+        font-weight: bolder;
+        position: absolute;
+        right: 0;
+        top: -35px;
+    }
+    .btn-navegacao button:hover{
+        background-color: #50baea;
+        box-shadow: inset 0 0 20px #032c42c7;
+    }
+
+/*************************** Menu-Topo */
+  
+  #top{
+    background: #032c42;
+    height: 133px;
+    color: #fff;
+  }
+
+  #top #logo{
+    background-color: white;
+    height: 150px;
+    padding: 30px;
+    border: solid 3px #032c42;
+    margin-top: 30px;
+  }
+
+  #top #logo img{
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #top .acesso-rapido{
+    margin: 50px 0 0 0;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  #top .acesso-rapido p{
+    margin: 0;
+  }
+
+  #top .acesso-rapido a{
+    padding: 0 0 0 15px;
+    margin: 0 0 0 15px;
+    font-size: 13px;
+    border-left: solid 1px #fff;
+    color: #fff;    
+    text-align: center;
+  }
+
+/*************************** Conteudo */
+
+    #menu-principal{
+        height: fit-content;
+    }
+
+    #menu-principal p{
+        margin: 15px 0;
+        padding: 15px;
+        border: solid 1px #fff;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    #menu-principal p:hover{
+       background: #50baea;
+    }
+
+    #menu-principal p img{
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .bloco-principal{
+        min-height: 800px;
+    }
+
+    .bloco-principal .card{
+        background: #50baeaa3;
+        border-radius: 15px;
+        border: none;
+        text-align: center;
+        padding: 15px;
+        min-height: 250px;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+
+    .bloco-principal .card:hover{
+        background: #50baea;
+    }
+
+    .bloco-principal .card p{
+        color: #fff;
+        font-size: 24px;
+    }
+
+    .bloco-principal .card p.mais{
+        font-size: 100px;
+        position: absolute;
+        font-weight: bolder;
+        right: 65px;
+        bottom: 125px;
+        margin: 0;
+        width: 10px;
+        height: 10px;
+    }
+
+    .bloco-principal .card p.texto{
+        margin: 55px 0 0 0;
+    }
+
+    .bloco-principal .card p.texto span{
+        font-weight: bold;
+        font-size: 42px;
+    }
+
+    .bloco-principal h2{
+        width: 100%;
+        margin: 0 0 0px 15px;
+        padding-bottom: 5px;
+        font-size: 40px;
+    }
+
+    .bloco-principal hr.h2{
+        border: solid 1.5px #50baea;
+        margin: 0 0 30px 15px;
+        margin-left: 15px;
+    }
+
+    .bloco-principal .camp-pesquisa h3{
+        padding: 10px;
+        color: white;
+        margin: 0;
+    }
+
+/*************************** Tabelas */
+
+    .table-responsive {
+        margin-top: 30px;
+    }
+    .table-responsive thead{
+        background-color: #032c42;
+        color: #fff;
+    }
+
+    th, td{
+        text-align: center;
+    }
+
+    td{
+        vertical-align: middle !important;
+    }
+
+    tr td a{
+        color: #000;
+    }
+
+    tr.ducolor{
+        background-color: #dee2e6;
+    }
+
+    tr.ducolor td{
+        border: solid 2px #fff !important;
+    }
+
+    .camp-pesquisa{
+        margin: 0 0 0 15px;
+        background-color: #50baea;
+        background-clip: content-box;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        padding: 0 15px 0 0;
+    }
+
+    .camp-pesquisa form{
+        padding: 0 15px 15px;
+    }
+
+    .camp-pesquisa form input{
+        border: none;
+        padding: 5px;
+    }
+
+    .camp-pesquisa form input.submit{
+        width: 100%;
+        height: 30px;
+        font-size: 17px;
+        margin: 0;
+    }
+
+    table .destaque{
+        font-weight: bold;
+        font-size: 17px;
+    }
+
+    .img-demo{
+        object-fit: cover;
+        width: 100%;
+        height: 100px;
+    }
+    .img-logo{
+        object-fit: cover;
+        width: 180px;
+    }
+    .img-logo-edit{
+        object-fit: cover;
+        width: 270px;
+        margin-top: 25px;
+    }
+
+/*************************** Formularios */
+
+    form.padrao input,
+    form.padrao select,
+    form.padrao textarea{
+        background-color: #eaeaea;
+        border: none;
+        padding: 10px 10px 10px 70px;
+        font-style: italic;
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    form.padrao textarea{
+        resize: none;
+    }
+
+    form.padrao input[type=checkbox]{
+        width: 17px;
+        height: 17px;
+        margin: 0 0 0 0;
+    }
+
+    form.padrao select{
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+
+    form.padrao label.padrao{
+        position: absolute;
+        margin: 20px 0 0 10px;
+    }
+
+    form.padrao .submit,
+    .submit{
+        width: 100%;
+        background-color: #032c42;
+        color: white;
+        font-style: inherit;
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        margin: 10px 0;
+        box-shadow: inset 0 0 20px #50baeac7;
+        transition: ease .4s all;
+        font-weight: bolder;
+        text-align: center;
+        cursor: pointer;
+    }
+    form.padrao .submit.salvar:hover{
+        background-color: #a9dca1;
+        box-shadow: inset 0 0 20px #00000078;
+    }
+    .submit.excluir:hover{
+        background-color: #ff6961;
+        box-shadow: inset 0 0 20px #00000078;
+    }
+
+    .submit.excluir{
+        float: right;
+        margin-top: -58px;
+        width: 50%;
+    }
+
+    .fundo-preto-exclir,
+    .fundo-preto-exclir-lazer,
+    .fundo-preto-exclir-planta,
+    .fundo-preto-exclir-obra{
+        background-color: #00000091;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9999;
+        cursor: pointer;
+        display: none;
+        transition: none;
+    }
+    .bloco-exclir,
+    .bloco-exclir-lazer,
+    .bloco-exclir-planta,
+    .bloco-exclir-obra{
+        background-color: white;
+        width: 320px;
+        min-height: 350px;
+        z-index: 999999;
+        position: fixed;
+        top: 20%;
+        left: calc( 50% - 160px );
+        display: none;
+        transition: none;
+    }
+    .bloco-exclir .conteudo,
+    .bloco-exclir-lazer .conteudo,
+    .bloco-exclir-planta .conteudo,
+    .bloco-exclir-obra .conteudo{
+        border: solid 2px #50baea;
+        margin: 15px;
+        min-height: 320px;
+    }
+    .bloco-exclir h2,
+    .bloco-exclir-lazer h2,
+    .bloco-exclir-planta h2,
+    .bloco-exclir-obra h2{
+        margin: 30px 0;
+        font-size: 32px;
+        text-align: center;
+    }
+    .bloco-exclir .salvar,
+    .bloco-exclir-lazer .salvar,
+    .bloco-exclir-planta .salvar,
+    .bloco-exclir-obra .salvar{
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .filtro{
+        opacity: 0;
+    }
+    .filtro:hover{
+        opacity: 1;
+    }
+    .img_desktop{
+        height: 238px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .filtro-desktop{
+        height: 238px;
+        width: 100%;
+        object-fit: cover;
+        margin-top: -260px;
+    }
+    .img_tablet1{
+        height: 332px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .filtro-tablet1{
+        height: 332px;
+        width: 100%;
+        object-fit: cover;
+        margin-top: -355px;
+    }
+    .img_tablet2{
+        height: 308px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .filtro-tablet2{
+        height: 308px;
+        width: 100%;
+        object-fit: cover;
+        margin-top: -330px;
+    }
+    .img_mobile{
+        height: 328px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .filtro-mobile{
+        height: 328px;
+        width: 100%;
+        object-fit: cover;
+        margin-top: -350px;
+    }
+
+    .x-banner{
+        background-color: #102c54;
+        color: white;
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 6px;
+        position: absolute;
+        right: 0;
+        margin: 11px 15px 0 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    #menu-empreendimento .btns-all{
+        display: flex;
+        text-align: center;
+    }
+
+    #menu-empreendimento .btns-all .btn-empre{
+        flex: 1;
+        width: 100%;
+        height: 100px;
+        background-color: #eaeaea;
+        border: solid 1px #fff;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 16px; 
+    }
+
+    #menu-empreendimento .btns-all .btn-empre img{
+        filter: invert(1);
+        margin: 15px 0 10px;
+    }
+
+    #menu-empreendimento .btns-all .btn-empre:hover,
+    #menu-empreendimento .btns-all .btn-empre.select{
+        background-color: #50baea;
+        color: #fff;
+    }
+    #menu-empreendimento .btns-all .btn-empre:hover img,
+    #menu-empreendimento .btns-all .btn-empre.select img{
+        filter: invert(0);
+    }
+
+    #bloc-dados .paleta{
+        display: flex;
+        margin: 0 -5px;
+    }
+
+    #bloc-dados .paleta .cor{
+        width: 50px;
+        height: 50px;
+        flex: 1;
+        border: solid #000 1px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    #bloc-dados .paleta .cor.activo{
+        border: solid #032c42 10px;
+    }
+
+    #bloc-fotos,
+    #bloc-planta,
+    #bloc-cronograma,
+    #bloc-obra,
+    #bloc-localizacao,
+    #bloc-lazer{
+        display: none;
+    }
+
+    .img_capa,
+    .img_thumb,
+    .img_empreendimento,
+    .bloc_img_lazer,
+    .img_lazer_novo,
+    .img_planta_nova,
+    .img_planta,
+    .img_mapa{
+        width: 100%;
+    }
+
+    .bloc-logo{
+        background-color: #eaeaea;
+        text-align: center;
+        min-height: 158px;
+    }
+
+    #bloc_novo_lazer,
+    #bloc_nova_planta,
+    #bloc_foto_obra{
+        display: none;
+    }
+
+    #icones_novo,
+    .icones{
+        background-color: #eaeaea;
+        width: 100%;
+        height: 74px;
+        padding: 10px 10px 20px;
+        display: flex;
+        overflow-x: overlay;
+    }
+    #icones_novo img,
+    .icones img{
+        margin: 0 5px;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+    }
+    #icones_novo img.select,
+    .icones img.select{
+        box-shadow: 0 0 13px 9px #50baea;
+        border-radius: 50px;
+    }
+    p.padrao{
+        position: inherit;
+        margin: -5px 0 -15px 10px;
+        cursor: pointer;
+        z-index: 1;
+        max-width: 100%;
+        font-weight: 700;
+    }
+
+    .excluir_lazer,
+    .excluir_planta,
+    .excluir_obra {
+        background-color: #50baea;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        padding: 10px;
+        border-bottom-left-radius: 20px;
+        z-index: 7;
+    }
+    .excluir_lazer:hover,
+    .excluir_planta:hover,
+    .excluir_obra:hover {
+        background-color: #032c42;
+    }
+
+
+
+
+
+
+
+
+
+/*************************** Footer */
+
+    #footer{
+      background: #fff;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #footer .container{
+        border-top: solid 4px #50baea;
+        min-height: 100px;
+        margin-top: -2px;
+    }
+
+    #footer .col-lg-12{
+        display: flex;
+        padding: 0
+    }
+
+    #footer .primeiro,
+    #footer .segundo,
+    #footer .terceiro{
+        padding: 15px 0;
+    }
+
+    #footer .primeiro{
+        text-align: left;
+    }
+    #footer .primeiro p{
+        margin-top: 17px;
+    }
+    #footer .segundo{
+        text-align: center;
+    }
+    #footer .terceiro{
+        text-align: right;
+    }
+    #footer .terceiro img{
+        margin-top: 17px;
+    }

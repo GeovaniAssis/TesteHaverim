@@ -1,0 +1,51 @@
+/*
+Theme Name: ABQ - SISTEMA
+Theme URI:
+Author: Alexandre do Vale <alexandre.vale@summercomunicacao.com.br>
+Author URI: http://www.summercomunicacao.com.br/
+Description: 
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags:
+Text Domain: 
+*/
+.no-print { 
+    display: none!important; 
+}
+    
+body {
+    margin:0;
+    padding:0;
+    line-height: 1.4em;
+}
+
+#main h2 {
+    font-size: 24px;
+    color: #6ca1ea;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+table{
+    width: 100%!important;
+}
+
+#main thead{
+    background-color: #39629d!important;
+    color: #fff!important;
+    border-radius: 15px 15px 0 0!important;
+}
+
+#relatorio tbody tr:nth-child(odd){
+    background-color: #f1f5f9!important;
+}
+
+.consulta-header { 
+    padding-top: 15px; 
+}
+
+.consulta-header .relatorio-selecionado { 
+    background-color: #6ca1ea; 
+    color: #fff; 
+}
