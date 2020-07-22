@@ -1,6 +1,7 @@
 $(function(){
 
-	var url = "http://concepts.summercomunicacao.com.br/tecnocal2.0";
+	var url = "https://www.tecnocalconstrutora.com.br";
+	//Alterar a linha 1393
 
 	lazyload();
 
@@ -10,6 +11,156 @@ $(function(){
 		$('input[name="celular"]').mask('(99) 9 9999-9999');
 		$('input[name="cnpj"]').mask('99.999.999/9999-99');
 
+
+	// VALIDAÇÃO CPF_CNPJ
+		$("#check_autonomo").click(function (){
+		    	$("#imobiliaria").val("Autônomo");
+		    	$("#imobiliaria").prop("readonly", true);
+		    	$("#cnpj_cpf").val("");
+		    	$("#cnpj_cpf").attr('placeholder','CPF');
+		    	$('#cnpj_cpf').mask('999.999.999-99');
+		});
+
+		$("#check_imobiliaria").click(function (){
+				$("#imobiliaria").prop("readonly", false);
+		    	$("#imobiliaria").val("");
+		    	$("#cnpj_cpf").val("");
+		    	$("#cnpj_cpf").attr('placeholder','CNPJ');
+		    	$('#cnpj_cpf').mask('99.999.999/9999-99');
+		});
+
+
+		var CPF_CNPJ = $("#cnpj_cpf");
+
+		$(function() {
+
+		    CPF_CNPJ.keyup(function(){
+
+		    	var val = CPF_CNPJ.val();
+		    	console.log(val);
+
+		    	if (val.length == 14) {
+			        var cpf = val.trim;
+			     
+			        cpf = cpf.toString().replace(/\./g, '');
+			        cpf = cpf.toString().replace('-', '');
+			        cpf = cpf.split('');
+			        
+			        var v1 = 0;
+			        var v2 = 0;
+			        var aux = false;
+			        
+			        for (var i = 1; cpf.length > i; i++) {
+			            if (cpf[i - 1] != cpf[i]) {
+			                aux = true;   
+			            }
+			        } 
+			        
+			        if (aux == false) {
+			            return false; 
+			        } 
+			        
+			        for (var i = 0, p = 10; (cpf.length - 2) > i; i++, p--) {
+			            v1 += cpf[i] * p; 
+			        } 
+			        
+			        v1 = ((v1 * 10) % 11);
+			        
+			        if (v1 == 10) {
+			            v1 = 0; 
+			        }
+			        
+			        if (v1 != cpf[9]) {
+			            return false; 
+			        } 
+			        
+			        for (var i = 0, p = 11; (cpf.length - 1) > i; i++, p--) {
+			            v2 += cpf[i] * p; 
+			        } 
+			        
+			        v2 = ((v2 * 10) % 11);
+			        
+			        if (v2 == 10) {
+			            v2 = 0; 
+			        }
+			        
+			        if (v2 != cpf[10]) {
+			            return false; 
+			        } else {   
+			            return true; 
+			        }
+
+		    } else if (val.length == 18) {
+		        var cnpj = val.trim();
+		        
+		        cnpj = cnpj.toString().replace(/\./g, '');
+		        cnpj = cnpj.toString().replace('-', '');
+		        cnpj = cnpj.toString().replace('/', ''); 
+		        cnpj = cnpj.split(''); 
+		        
+		        var v1 = 0;
+		        var v2 = 0;
+		        var aux = false;
+		        
+		        for (var i = 1; cnpj.length > i; i++) { 
+		            if (cnpj[i - 1] != cnpj[i]) {  
+		                aux = true;   
+		            } 
+		        } 
+		        
+		        if (aux == false) {  
+		            return false; 
+		        }
+		        
+		        for (var i = 0, p1 = 5, p2 = 13; (cnpj.length - 2) > i; i++, p1--, p2--) {
+		            if (p1 >= 2) {  
+		                v1 += cnpj[i] * p1;  
+		            } else {  
+		                v1 += cnpj[i] * p2;  
+		            } 
+		        } 
+		        
+		        v1 = (v1 % 11);
+		        
+		        if (v1 < 2) { 
+		            v1 = 0; 
+		        } else { 
+		            v1 = (11 - v1); 
+		        } 
+		        
+		        if (v1 != cnpj[12]) {  
+		            return false; 
+		        } 
+		        
+		        for (var i = 0, p1 = 6, p2 = 14; (cnpj.length - 1) > i; i++, p1--, p2--) { 
+		            if (p1 >= 2) {  
+		                v2 += cnpj[i] * p1;  
+		            } else {   
+		                v2 += cnpj[i] * p2; 
+		            } 
+		        }
+		        
+		        v2 = (v2 % 11); 
+		        
+		        if (v2 < 2) {  
+		            v2 = 0;
+		        } else { 
+		            v2 = (11 - v2); 
+		        } 
+		        
+		        if (v2 != cnpj[13]) {   
+		            return false; 
+		        } else {  
+		            return true; 
+		        }
+		    } else {
+		        return false;
+		    }
+
+   			});
+		});
+
+	
 	// CARROSSEL
 		$('#linha-tempo').owlCarousel({
 			loop:true,
@@ -80,18 +231,25 @@ $(function(){
 			loop:true,
 			nav:true,
 			dots:false,
-			items: 3,
 			lazyLoad: true,
 			lazyLoadEager: 1,
 			center: true,
-			autoplay:true,
+			autoplay:false,
 			autoplayTimeout:3000,
+			touchDrag: false,
+			mouseDrag: false,
 			responsive : {
 			    0 : {
 			        items:1
 			    },
+			    767 : {
+			    	items:2
+			    },
 			    991 : {
-			    	items:3
+			    	items:2
+			    },
+			    1920 : {
+			    	items:4
 			    }
 			}
 		});
@@ -129,6 +287,18 @@ $(function(){
 			    }
 			}
 		});
+		
+	    $('.owl-empreedimento').owlCarousel({
+	        loop: true,
+	        nav: true,
+	        dots: false,
+	        lazyLoad: true,
+	        lazyLoadEager: 1,
+	        animateOut: 'fadeOut',
+	        animateIn: 'fadeIn',
+	        autoplay: false,
+	        items: 1
+	    });
 		
 	// FORMULARIO
 		$('#form-ligamos, #form-pre-avaliacao, #form-cadastrar-tabela, #form-sac, #form-outros, #form-trabalhe, #form-newsletter, #form-tabela, form-recuperar-senha-tabela').submit(function(e){
@@ -273,7 +443,7 @@ $(function(){
 
 				$.ajax({
 					type: 'POST',
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/contato-sac.php',
+					url: document.location.origin + '/wp-content/themes/tecnocal/php/contato-sac.php',
 					data: dados,
 					success: function(resposta) {
 
@@ -283,6 +453,7 @@ $(function(){
 						setTimeout(function(){
 							 if (resposta == 'true') {
 					          	$('#obrigado').fadeIn();
+					          	gtag('event', 'enviou-sac', {'event_category': 'enviou-sac'});
 					        } else {
 					          	console.log(resposta);
 					          	$('.erro').fadeIn();
@@ -321,7 +492,7 @@ $(function(){
 				$.ajax({
 					type: 'POST',
 					async: true,
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/contato-trabalhe.php',
+					url: document.location.origin + '/wp-content/themes/tecnocal/php/contato-trabalhe.php',
 					data: new FormData($('#form-trabalhe')[0]),
 	      			processData: false,
 	      			contentType: false,
@@ -333,6 +504,7 @@ $(function(){
 						setTimeout(function(){
 							 if (resposta == 'true') {
 					          	$('#obrigado').fadeIn();
+					          	gtag('event', 'enviou-trabalhe-conosco', {'event_category': 'enviou-trabalhe-conosco'});
 					        } else {
 					          	console.log(resposta);
 					          	$('.erro').fadeIn();
@@ -375,7 +547,7 @@ $(function(){
 
 				$.ajax({
 					type: 'POST',
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/contato-outros.php',
+					url: document.location.origin + '/wp-content/themes/tecnocal/php/contato-outros.php',
 					data: dados,
 					success: function(resposta) {
 
@@ -385,6 +557,7 @@ $(function(){
 						setTimeout(function(){
 							 if (resposta == 'true') {
 					          	$('#obrigado').fadeIn();
+					          	gtag('event', 'enviou-contato', {'event_category': 'enviou-contato'});
 					        } else {
 					          	console.log(resposta);
 					          	$('.erro').fadeIn();
@@ -414,7 +587,7 @@ $(function(){
 
 					$.ajax({
 						type: 'POST',
-						url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/contato-newslatter.php',
+						url: document.location.origin + '/wp-content/themes/tecnocal/php/contato-newslatter.php',
 						data: dados,
 						success: function(resposta) {
 
@@ -423,6 +596,7 @@ $(function(){
 							setTimeout(function(){
 								 if (resposta == 'true') {
 						          	$('.obrigado').fadeIn();
+						          	gtag('event', 'assinou-newsletter', {'event_category': 'assinou-newsletter'});
 						        } else {
 						          	console.log(resposta);
 						          	$('#contato-footer .erro').fadeIn();
@@ -455,7 +629,7 @@ $(function(){
 				setTimeout(function(){
 					$.ajax({
 						type: 'POST',
-						url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/logar-tabela.php',
+						url: document.location.origin + '/wp-content/themes/tecnocal/php/logar-tabela.php',
 						data: dados,
 						success: function(resposta) {
 
@@ -469,7 +643,7 @@ $(function(){
 						          	$('.tab-conteudo .erro').fadeIn();
 						          	$('#tentar--novamente--tabela').fadeIn();
 							    }else{
-							    	window.location.href = "http://concepts.summercomunicacao.com.br/tecnocal2.0/tabelas/logado";
+							    	window.location.href = url+"/tabelas/logado";
 							    }
 							}, 900);
 
@@ -495,7 +669,7 @@ $(function(){
 				setTimeout(function(){
 					$.ajax({
 						type: 'POST',
-						url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/recuperar-senha.php',
+						url: document.location.origin + '/wp-content/themes/tecnocal/php/recuperar-senha.php',
 						data: dados,
 						success: function(resposta) {
 
@@ -531,7 +705,7 @@ $(function(){
 				creci: { required: true, minlength: 3 },
 				imobiliaria: { required: true, minlength: 3 },
 				telefone: { required: true, minlength: 14 },
-				cnpj: { required: true, minlength: 18 },
+				cnpj: { required: true, maxlength: 18, minlength: 11 },
 				responsavel: { required: true, minlength: 3 },
 				endereco: { required: true, minlength: 5 },
 				numero: { required: true },
@@ -545,7 +719,7 @@ $(function(){
 				creci: { required: 'Informe o CRECI da imobiliaria', minlength: 'No mínimo 3 caracteres' },
 				imobiliaria: { required: 'Informe o nome da imobiliaria.', minlength: 'No mínimo 3 caracteres' },
 				telefone: { required: 'Informe o telefone de contato', minlength: 'No mínimo 14 caracteres' },
-				cnpj: { required: 'Informe o CNPJ da imobiliaria', minlength: 'No mínimo 18 caracteres' },
+				cnpj: { required: 'Informe o CNPJ/CPF corretamente', maxlength: 'No máximo 18 caractéres', minlength: 'No mínimo 11 caracteres' },
 				responsavel: { required: 'Informe o responsável pela imobiliaria', minlength: 'No mínimo 3 caracteres' },
 				endereco: { required: 'Informe o endereço da imobiliaria', minlength: 'No mínimo 5 caracteres' },
 				numero: { required: 'Informe o número do local' },
@@ -562,7 +736,7 @@ $(function(){
 				
 				$.ajax({
 					type: 'POST',
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/cadastro-tabela.php',
+					url: 'http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/php/cadastro-tabela.php',
 					data: dados,
 					success: function(resposta) {
 						setTimeout(function(){
@@ -616,7 +790,7 @@ $(function(){
 				
 				$.ajax({
 					type: 'POST',
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/pre-avaliacao.php',
+					url: document.location.origin + '/wp-content/themes/tecnocal/php/pre-avaliacao.php',
 					data: dados,
 					success: function(resposta) {
 						setTimeout(function(){
@@ -625,6 +799,7 @@ $(function(){
 						setTimeout(function(){
 							if (resposta == 'true') {
 					          	$('.cadastrar .obrigado').fadeIn();
+					          	gtag('event', 'enviou-simulacao', {'event_category': 'enviou-simulacao'});
 					        } else {
 					          	$('.cadastrar .erro').fadeIn();
 					          	document.getElementById("cad-txt-erro").innerHTML = resposta;
@@ -652,7 +827,7 @@ $(function(){
 				
 				$.ajax({
 					type: 'POST',
-					url: document.location.origin + '/tecnocal2.0/wp-content/themes/tecnocal/php/te-ligamos.php',
+					url: document.location.origin + '/wp-content/themes/tecnocal/php/te-ligamos.php',
 					data: dados,
 					success: function(resposta) {
 						setTimeout(function(){
@@ -661,6 +836,7 @@ $(function(){
 						setTimeout(function(){
 							if (resposta == 'true') {
 					          	$('#vamos-te-ligar .obrigado').fadeIn();
+					          	gtag('event', 'Te-ligamos', {'event_category': 'solicitar-telefonema'});
 					        } else {
 					          	$('#vamos-te-ligar .erro').fadeIn();
 					          	document.getElementById("txt-erro-lig").innerHTML = resposta;
@@ -711,10 +887,12 @@ $(function(){
 
 		$('.tel b').click(function(){
 			$(this).html('9110');
+			gtag('event', 'Telefone', {'event_category': 'ver-número'});
 		});
 
 		$('.whats b').click(function(){
 			$(this).html('4990');
+			gtag('event', 'celular', {'event_category': 'ver-whats'});
 		});
 
 		const bloco = $('div.wp-block-embed__wrapper');
@@ -977,6 +1155,7 @@ $(function(){
 				$(cards).fadeIn();
 				if( !$(cards).length ){ $('#nao_exite').fadeIn(); }
 			}, 1100);
+			gtag('event', 'busca-de-empreendimento', {'event_category': 'buscar-empreendimento'});
 		});
 
 		$('#busca').keypress(function(e){
@@ -1031,6 +1210,69 @@ $(function(){
 			$(this).fadeOut();
    			setTimeout(function(){ $('#ampliada .bloco-ampliada img').attr('src', ''); }, 700);
 			
+		});
+
+
+	
+		$('#owl-depoimentos .dep01').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep01').innerHeight();
+			$('#owl-depoimentos .center .item.dep01').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/2bDA9cO35xU?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep02').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep02').innerHeight();
+			$('#owl-depoimentos .center .item.dep02').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/1c7ZBNEkpVw?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep03').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep03').innerHeight();
+			$('#owl-depoimentos .center .item.dep03').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/I_4pqaubGds?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep04').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep04').innerHeight();
+			$('#owl-depoimentos .center .item.dep04').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/rpYebI82bdU?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep05').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep05').innerHeight();
+			$('#owl-depoimentos .center .item.dep05').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/2enhY5ETvvY?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+
+		$('#owl-depoimentos .dep06').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep06').innerHeight();
+			$('#owl-depoimentos .center .item.dep06').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/-DMQLh8jCXM?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep07').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep07').innerHeight();
+			$('#owl-depoimentos .center .item.dep07').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/BaKpWFLg5T8?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep08').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep08').innerHeight();
+			$('#owl-depoimentos .center .item.dep08').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/Ux8mIlBU8X0?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep09').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep09').innerHeight();
+			$('#owl-depoimentos .center .item.dep09').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/LwW_JlwamRk?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep10').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep10').innerHeight();
+			$('#owl-depoimentos .center .item.dep10').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/4SODIlPhy-w?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+		$('#owl-depoimentos .dep11').click(function(){
+			 var largura = $('#owl-depoimentos .center .item.dep11').innerHeight();
+			$('#owl-depoimentos .center .item.dep11').html('<iframe width="100%" height="'+largura+'" src="https://www.youtube.com/embed/gGX6rsIcca0?autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		});
+
+
+		$('#owl-depoimentos').on('changed.owl.carousel', function(event) {
+			$('#owl-depoimentos .center .item.dep01').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image01.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep02').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image02.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep03').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image03.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep04').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image04.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep05').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image05.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep06').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image06.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep07').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image07.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep08').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image08.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep09').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image09.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep10').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image10.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
+			$('#owl-depoimentos .center .item.dep11').html('<img class="principal" src="'+url+'/wp-content/themes/tecnocal/img/depoimentos/image11.jpg"><img class="play" src="'+url+'/wp-content/themes/tecnocal/img/icon/play.png">');
 		});
 
 
@@ -1100,23 +1342,23 @@ $(function(){
 
 
 	$('.btn-canto-forte').click(function(){
-		$('#mapa .img-mapa img').attr('src','http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/img/mapa/forte-mapa.jpg');
+		$('#mapa .img-mapa img').attr('src',url+'/wp-content/themes/tecnocal/img/mapa/forte-mapa.jpg');
 	});
 
 	$('.btn-boqueirao').click(function(){
-		$('#mapa .img-mapa img').attr('src','http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/img/mapa/boqueirao-mapa.jpg');
+		$('#mapa .img-mapa img').attr('src',url+'/wp-content/themes/tecnocal/img/mapa/boqueirao-mapa.jpg');
 	});
 
 	$('.btn-aviacao').click(function(){
-		$('#mapa .img-mapa img').attr('src','http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/img/mapa/aviacao-mapa.jpg');
+		$('#mapa .img-mapa img').attr('src',url+'/wp-content/themes/tecnocal/img/mapa/aviacao-mapa.jpg');
 	});
 
 	$('.btn-guilhermina').click(function(){
-		$('#mapa .img-mapa img').attr('src','http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/img/mapa/guilhermina-mapa.jpg');
+		$('#mapa .img-mapa img').attr('src',url+'/wp-content/themes/tecnocal/img/mapa/guilhermina-mapa.jpg');
 	});
 
 	$('.btn-ocian').click(function(){
-		$('#mapa .img-mapa img').attr('src','http://concepts.summercomunicacao.com.br/tecnocal2.0/wp-content/themes/tecnocal/img/mapa/ocian-mapa.jpg');
+		$('#mapa .img-mapa img').attr('src',url+'/wp-content/themes/tecnocal/img/mapa/ocian-mapa.jpg');
 	});
 
 	$('#plantas .btns-opcao').click(function(){
@@ -1131,6 +1373,7 @@ $(function(){
 
 	$('.tel span').click(function(){
 		$(this).html('9110');
+		gtag('event', 'Telefone', {'event_category': 'ver-número'});
 	});
 
 	$('.btn--form').click(function(){
@@ -1335,7 +1578,7 @@ var rangeSlider = function(){
 };
 rangeSlider();
 
-if (window.location.href == "http://concepts.summercomunicacao.com.br/tecnocal2.0/pre-avaliacao/") {
+if (window.location.href == "https://www.tecnocalconstrutora.com.br/pre-avaliacao/") {
 	document.getElementById("barra-range").oninput = function() {
 	  var valor = this.value;
 	  var maximo = $(this).attr('max');
@@ -1343,4 +1586,359 @@ if (window.location.href == "http://concepts.summercomunicacao.com.br/tecnocal2.
 	  this.style.background = 'linear-gradient(to right, #fb9124 ' + valor + '%, #f5f5f5 ' + valor + '%)';
 	};
 }
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var map;
+var ctaLayer;
+
+function initMap(){
+     var mapOptions = {
+          zoom: 14,
+          scrollwheel: false,
+          streetViewControl: false,
+          center: new google.maps.LatLng(-24.00907039, -46.43942356),
+     };
+    
+     map = new google.maps.Map(document.getElementById('mapa-canvas'), mapOptions);
+
+     var marker_recreio = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.0117535, -46.4364804),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-recreio.png'
+     });
+
+     google.maps.event.addListener(marker_recreio, 'click', function() { 
+          getEmpreendimento(72);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Recreio-Mapa-Home');
+     });
+
+     var marker_leblon = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.022798, -46.476240),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-leblon.png'
+     });
+
+     google.maps.event.addListener(marker_leblon, 'click', function() { 
+          getEmpreendimento(9);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Leblon-Mapa-Home');
+     });
+
+     var marker_pontal = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.025070, -46.473267),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-pontal.png'
+     });
+
+     google.maps.event.addListener(marker_pontal, 'click', function() { 
+          getEmpreendimento(62);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Pontal-Mapa-Home');
+     });
+ 
+     var marker_arpoador = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.016519, -46.448768),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-arpoador.png'
+     });
+
+     google.maps.event.addListener(marker_arpoador, 'click', function() { 
+          getEmpreendimento(63);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Arpoador-Mapa-Home');
+     });
+
+     var marker_amsterdam = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.007519, -46.427943),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-amsterdam.png'
+     });
+
+     google.maps.event.addListener(marker_amsterdam, 'click', function() { 
+          getEmpreendimento(60);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Amsterdam-Mapa-Home');
+     });
+
+     var marker_conchas = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.010598, -46.427201),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-conchas.png'
+     });
+
+     google.maps.event.addListener(marker_conchas, 'click', function() {
+          getEmpreendimento(64);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Conchas-Mapa-Home');
+     });
+
+     var marker_londres = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.010423, -46.425068),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-londres.png'
+     });
+
+     google.maps.event.addListener(marker_londres, 'click', function() { 
+          getEmpreendimento(59);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Londres-Mapa-Home');
+     });
+
+     var marker_tijuca = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.012929, -46.432868),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-tijuca.png'
+     });
+
+     google.maps.event.addListener(marker_tijuca, 'click', function() { 
+          getEmpreendimento(65);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Tijuca-Mapa-Home');
+     });
+
+     var marker_ottawa = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.0091324, -46.4155378),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-ottawa.png'
+     });
+
+     google.maps.event.addListener(marker_ottawa, 'click', function() { 
+          getEmpreendimento(66);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Ottawa-Mapa-Home');
+     });
+
+     var marker_paris = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(-24.008198, -46.409501),
+          icon: url+'/wp-content/themes/tecnocal/img/marker/marker-paris.png'
+     });
+
+     google.maps.event.addListener(marker_paris, 'click', function() { 
+          getEmpreendimento(58);
+          // ga('send', 'event', 'Clicou-Mapa-Home', 'Clicou-Paris-Mapa-Home');
+     });
+
+     google.maps.event.addDomListener(window, "resize", function() {
+          var center = map.getCenter();
+          google.maps.event.trigger(map, "resize");
+          map.setCenter(center);
+     });
+}
+
+function setBairro(val){
+     // map = "";
+     // initMap(); 
+     // ctaLayer = new google.maps.KmlLayer({
+     //      url: 'https://www.tecnocalconstrutora.com.br/wp-content/themes/tecnocal/js/maps/api/'+val+'.kml',
+     //      map: map
+     // });
+     // $(".thumb-txt-mp").hide(10);
+     $(".thumb-txt-mp").hide(10);
+      $('.mapa-content img').each(function(){
+        $(this).fadeOut(0);
+      });
+     var mapa = '.mapa-'+val;
+     $(mapa).fadeIn(0);
+}
+
+$(document).ready(function(){
+     // $(".item-bairro").click(function(){
+     //      if( $(this).hasClass('map-active') ){
+     //           map = "";
+     //           initMap(); 
+     //           $(this).removeClass("map-active");
+     //      }else{
+     //           $(".item-bairro").removeClass("map-active");
+     //           $(this).addClass("map-active");
+     //      }
+     // });
+     $(".item-bairro").click(function(){
+          if( $(this).hasClass('map-active') ){
+               $(this).removeClass("map-active");
+               $('.mapa-content img').each(function(){
+                  $(this).fadeOut(0);
+               });
+               $('.mapa-praia-grande').fadeIn(0);
+          }else{
+               $(".item-bairro").removeClass("map-active");
+               $(this).addClass("map-active");
+          }
+     });
+});
+
+$(document).ready(function(){
+  $('.marker-residencial-praia-do-leblon').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(16);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Leblon-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-praia-do-pontal').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(14);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Pontal-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-praia-do-arpoador').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(18);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Arpoador-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-praia-do-recreio').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(2);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Recreio-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-barra-da-tijuca').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(15);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Tijuca-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-amsterdam').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(13);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Amsterdam-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-praia-das-conchas').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(19);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Conchas-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-londres').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(12);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Londres-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-ottawa').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(1);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Ottawa-Mapa-Home'});
+    return false;
+  });
+
+  $('.marker-residencial-paris').click(function(){
+
+  	if( $(window).width() <= 991){
+  		$('#owl-praia').css({'margin-top':'330px'});
+  		$('.map-infos').css({'height':'415px'});
+  		 $('html, body').animate({
+               scrollTop: $("#map-infos").offset().top
+          }, 2000);
+  	}else{
+  		$('#owl-praia').css({'margin-top':'0px'});
+  	}
+    getEmpreendimento(17);
+    gtag('event', 'Clicou-Mapa-Home', {'event_category': 'Clicou-Paris-Mapa-Home'});
+    return false;
+  });
+});

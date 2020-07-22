@@ -67,7 +67,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'capa';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -101,7 +101,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'thumb';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -136,7 +136,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'logo';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -170,7 +170,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'destaque1';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -204,7 +204,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'destaque2';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -237,7 +237,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 						$config_empreendimento['file_name'] 	= 'empreendimento_principal';
 					$config_empreendimento['remove_spaces'] = TRUE;
 
@@ -271,7 +271,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimento.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'mapa';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -309,7 +309,7 @@ class Empreendimentos extends CI_Controller {
 					$nome = str_replace("/", "-", $nome );
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/planta/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= $nome;
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -347,7 +347,7 @@ class Empreendimentos extends CI_Controller {
 					$nome = $this->my_functions->remove_accent($nome);
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/obra/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= $nome;
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -392,7 +392,7 @@ class Empreendimentos extends CI_Controller {
 					$nome = str_replace("/", "-", $nome );
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimento.'/lazer/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= $nome;
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -483,7 +483,7 @@ class Empreendimentos extends CI_Controller {
 				$dados['lazer']		= $this->MEmpreendimentos->buscar_lazers( $cd_empreendimentos_editar );
 				$dados['planta']	= $this->MEmpreendimentos->buscar_plantas( $cd_empreendimentos_editar );
 				$dados['endereco']	= $this->MEmpreendimentos->buscar_endereco( $cd_empreendimentos_editar );
-				$dados['obra']	= $this->MEmpreendimentos->buscar_obra( $cd_empreendimentos_editar );
+				$dados['obra']		= $this->MEmpreendimentos->buscar_obra( $cd_empreendimentos_editar );
 
 				$this->load->view('base', $dados);
 
@@ -502,7 +502,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'capa';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -548,7 +548,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'thumb';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -591,7 +591,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'logo';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -634,7 +634,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'destaque1';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -679,7 +679,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'destaque2';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -725,7 +725,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'empreendimento_principal';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -767,7 +767,7 @@ class Empreendimentos extends CI_Controller {
 					{ mkdir('./assets/empreendimento/'.$cd_empreendimentos_editar.'/', 0777, true); }
 
 					$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/';
-					$config_empreendimento['allowed_types'] = 'jpg|png';
+					$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 			      	$config_empreendimento['file_name'] 	= 'mapa';
 			        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -815,7 +815,7 @@ class Empreendimentos extends CI_Controller {
 						$nome = str_replace("/", "-", $nome );
 
 						$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/planta/';
-						$config_empreendimento['allowed_types'] = 'jpg|png';
+						$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 				      	$config_empreendimento['file_name'] 	= $nome;
 				        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -865,7 +865,7 @@ class Empreendimentos extends CI_Controller {
 							$nome = str_replace("/", "-", $nome );
 
 							$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/planta/';
-							$config_empreendimento['allowed_types'] = 'jpg|png';
+							$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 						  	$config_empreendimento['file_name'] 	= $nome;
 						    $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -915,7 +915,7 @@ class Empreendimentos extends CI_Controller {
 						$nome = $this->my_functions->remove_accent($nome);
 
 						$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/obra/';
-						$config_empreendimento['allowed_types'] = 'jpg|png';
+						$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 				      	$config_empreendimento['file_name'] 	= $nome;
 				        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -982,7 +982,7 @@ class Empreendimentos extends CI_Controller {
 							$nome = $this->my_functions->remove_accent($nome);
 
 							$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/obra/';
-							$config_empreendimento['allowed_types'] = 'jpg|png';
+							$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 						  	$config_empreendimento['file_name'] 	= $nome;
 						    $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -1037,7 +1037,7 @@ class Empreendimentos extends CI_Controller {
 						$nome = str_replace("/", "-", $nome );
 
 						$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/lazer/';
-						$config_empreendimento['allowed_types'] = 'jpg|png';
+						$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 				      	$config_empreendimento['file_name'] 	= $nome;
 				        $config_empreendimento['remove_spaces'] = TRUE;
 
@@ -1100,7 +1100,7 @@ class Empreendimentos extends CI_Controller {
 							$nome = str_replace("/", "-", $nome );
 
 							$config_empreendimento['upload_path'] 	= './assets/empreendimento/'.$cd_empreendimentos_editar.'/lazer/';
-							$config_empreendimento['allowed_types'] = 'jpg|png';
+							$config_empreendimento['allowed_types'] = 'jpg|jpeg|png';
 						  	$config_empreendimento['file_name'] 	= $nome;
 						    $config_empreendimento['remove_spaces'] = TRUE;
 

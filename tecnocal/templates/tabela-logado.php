@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="txt col-lg-12 txt--cent">
 					<p>
-						Escolha a tabela do sue interesse.
+						Escolha a tabela do seu interesse.
 					</p>
 				</div>
 			</div>
@@ -32,36 +32,42 @@
 				<div class="col-xl-3 col-lg-3 col-md-2"></div>
 
 				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
-					<a href="<?php echo bloginfo('url'); ?>/s/assets/files/TABELA DE PRECOS16.pdf" target="_blank">
+					<?php if( isset($_SESSION["tabelapreco"][0]['cd_tabela']) ){ ?>
+						<a href="<?php echo bloginfo('url'); ?>/s/assets/tabelas/<?php echo $_SESSION["tabelapreco"][0]['cd_tabela']; ?>/<?php echo $_SESSION["tabelapreco"][0]['ds_tabela']; ?>" target="_blank">
+							<div class="block-azul-claro mrg-bt--40">
+								<img src="<?php echo bloginfo('template_url'); ?>/img/icon/icon-empreendimento.png" alt="icone-empreendimento">
+								<p>TABELA DE PREÇOS<br>DOS RESIDENCIAIS</p>
+							</div>
+						</a>
+					<?php }else{ ?>
 						<div class="block-azul-claro mrg-bt--40">
 							<img src="<?php echo bloginfo('template_url'); ?>/img/icon/icon-empreendimento.png" alt="icone-empreendimento">
-							<p>TABELA DE PREÇOS<br>DOS RESIDENCIAIS</p>
-						</div>						
-					</a>
+							<p>DESCULPE, NÃO<br>POSSUÍMOS TABELA DE<br>PREÇOS DISPONIVEL</p>
+						</div>
+					<?php } ?>
 				</div>
 
 				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
-					<a href="<?php echo bloginfo('url'); ?>/s/assets/files/TABELA DE REVENDA9.pdf" target="_blank">
+					<?php if( isset($_SESSION["tabelarevenda"][0]['cd_tabela']) ){ ?>
+						<a href="<?php echo bloginfo('url'); ?>/s/assets/tabelas/<?php echo $_SESSION["tabelarevenda"][0]['cd_tabela']; ?>/<?php echo $_SESSION["tabelarevenda"][0]['ds_tabela']; ?>" target="_blank">
+							<div class="block-azul-claro mrg-bt--40">
+								<img src="<?php echo bloginfo('template_url'); ?>/img/icon/icon-revenda.png" alt="icone-revenda">
+								<p>TABELA DE<br>REVENDA</p>
+							</div>
+						</a>
+					<?php }else{ ?>
 						<div class="block-azul-claro mrg-bt--40">
 							<img src="<?php echo bloginfo('template_url'); ?>/img/icon/icon-revenda.png" alt="icone-revenda">
-							<p>TABELA DE<br>REVENDA</p>
+							<p>DESCULPE, NÃO<br>POSSUÍMOS TABELA DE<br>REVENDA DISPONIVEL</p>
 						</div>
-					</a>					
+					<?php } ?>					
 				</div>
 			</div>
 
 			<div class="row btns-tabelas mrg-bt--100">
 				<div class="col-xl-3 col-lg-3 col-md-2"></div>
 
-				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
-					<a href="<?php echo bloginfo('url'); ?>/treinamento">
-						<div class="block-azul-escuro">
-							<p>IR PARA O TREINAMENTO</p>
-						</div>						
-					</a>
-				</div>
-
-				<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-xs-12">
 					<div class="block-azul-escuro sair-tabela">							
 						<img src="<?php echo bloginfo('template_url'); ?>/img/icon/icon-sair.png" alt="icone-sair">
 						<p>SAIR</p>
@@ -70,7 +76,6 @@
 			</div>
 		</div>		
 	</section>
-
 <?php 
 	get_footer();
 ?>

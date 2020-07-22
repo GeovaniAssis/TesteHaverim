@@ -698,31 +698,31 @@
 
                                     <label for="novo_foto_obra_posicao" class="padrao">Posição:</label>
                                     <select id="novo_foto_obra_posicao" name="novo_foto_obra_posicao" style="padding-left: 85px;">
-                                        <option value="1" >
+                                        <option value="01" >
                                             1
                                         </option>
-                                        <option value="2" >
+                                        <option value="02" >
                                             2
                                         </option>
-                                        <option value="3" >
+                                        <option value="03" >
                                             3
                                         </option>
-                                        <option value="4" >
+                                        <option value="04" >
                                             4
                                         </option>
-                                        <option value="5" >
+                                        <option value="05" >
                                             5
                                         </option>
-                                        <option value="6" >
+                                        <option value="06" >
                                             6
                                         </option>
-                                        <option value="7" >
+                                        <option value="07" >
                                             7
                                         </option>
-                                        <option value="8" >
+                                        <option value="08" >
                                             8
                                         </option>
-                                        <option value="9" >
+                                        <option value="09" >
                                             9
                                         </option>
                                         <option value="10" >

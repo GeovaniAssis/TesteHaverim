@@ -1,5 +1,5 @@
 <?php
-	include ($_SERVER["DOCUMENT_ROOT"].'tecnocal2.0/wp-content/themes/tecnocal/php/connection.php');
+	include ($_SERVER["DOCUMENT_ROOT"].'/tecnocal2.0/wp-content/themes/tecnocal/php/connection.php');
   	$conn = Database::conexao();
 
 	try {
@@ -96,7 +96,7 @@
 		$_SESSION['empre_endereco'] = $stmt->fetchAll();
 
 
-		$stmt = $conn->prepare("SELECT * FROM tb_empreendimento_obra ;");
+		$stmt = $conn->prepare("SELECT * FROM tb_empreendimento_obra ORDER BY ds_posicao ASC;");
 		$stmt->execute();
 		session_start();
 		$_SESSION['empre_obra'] = $stmt->fetchAll();

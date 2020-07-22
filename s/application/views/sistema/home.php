@@ -1,6 +1,7 @@
     <div class="row">
         <?php 
             foreach ( $_SESSION['modulos_cadastrar'] as $modulo ) :
+                if($modulo["nm_resumido_modulo"] != "Corretores"){
         ?>
             <div class="col-lg-6">
                 <a href="<?php echo base_url('');?><?php echo $modulo["ds_modulo"]; ?>/cadastrar">
@@ -11,6 +12,7 @@
                 </a>
             </div>
         <?php
+                }
             endforeach;
         ?>
     </div>

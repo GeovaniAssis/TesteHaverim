@@ -81,8 +81,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['empreendimentos/pesquisa'] 							= 'empreendimentos/pesquisa';
 	$route['empreendimentos/cadastrar']                  		= 'empreendimentos/cadastrar';
 	$route['empreendimentos/editar/(:num)']                    	= 'empreendimentos/editar/$1';
-	$route['empreendimentos/excluir/(:num)']                    = 'empreendimentos/excluir/$1';
-	
+	$route['empreendimentos/excluir/(:num)']                    = 'empreendimentos/excluir/$1';	
 	$route['empreendimentos/excluirlazer/(:num)']              	= 'empreendimentos/excluirlazer/$1';
 	$route['empreendimentos/excluirplanta/(:num)']              = 'empreendimentos/excluirplanta/$1';
 	$route['empreendimentos/excluirobra/(:num)']  	            = 'empreendimentos/excluirobra/$1';
+
+// Tabelas
+	$route['tabelas'] 											= 'tabelas';
+	$route['tabelas/cadastrar']                  				= 'tabelas/cadastrar';
+	$route['tabelas/editar/(:num)']                    			= 'tabelas/editar/$1';
+	$route['tabelas/excluir/(:num)']                    		= 'tabelas/excluir/$1';
+
+// Corretores
+	$route['corretores'] 										= 'corretores';
+	$route['corretores/pag/(:num)'] 							= 'corretores/pag/$1';
+	$route['corretores/pesquisa'] 								= 'corretores/pesquisa';
+	$route['corretores/exportar'] 								= 'corretores/exportar';
+	$route['corretores/editar/(:num)'] 							= 'corretores/editar/$1';
+	$route['corretores/excluir/(:num)'] 						= 'corretores/excluir/$1';

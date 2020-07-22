@@ -287,6 +287,18 @@
         margin-top: 25px;
     }
 
+/*************************** rodape */
+
+    #rodape .bloco{
+        align-items: center;
+        text-align: center;
+    }
+
+    #rodape .bloco strong,
+    #rodape .bloco a{
+        margin: 0 10px;
+    }
+
 /*************************** Formularios */
 
     form.padrao input,

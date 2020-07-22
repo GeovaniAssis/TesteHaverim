@@ -134,15 +134,68 @@
 
 				</div>
 
+
+
+
+
+
+
+
 				<div class="cadastrar col-xl-8 col-lg-8 col-md-6 col-sm-6 col-xs-12 pd--0">
+
 					<form id="form-cadastrar-tabela" action="">
+
+
+						<div class="row mrg--0" style="padding-bottom: 20px">
+							<div class="col-xl-6 col-lg-6">
+									<div class="form-check">
+		  							<input class="form-check-input" type="radio" name="check_imobiliaria_autonomo" id="check_imobiliaria" value="check_imobiliaria" checked
+		  							style="
+		  							    position: relative;
+									    left: 0px;
+									    width: 25px;">
+
+		  								<label class="form-check-label" for="check_imobiliaria" style="
+		  								    position: absolute;
+										    top: 10px;
+										    left: 30px;
+										    margin-left: 20px;
+										    font-size: 24px;
+										    cursor: pointer;">
+		   									Imobiliária
+		  								</label>
+									</div>
+							 </div>
+							<div class="col-xl-6 col-lg-6">
+									<div class="form-check">
+		  							<input class="form-check-input" type="radio" name="check_imobiliaria_autonomo" id="check_autonomo" value="check_autonomo"
+										style="
+										position: relative;
+									    left: 0px;
+									    width: 25px;
+									    ">
+		  								<label class="form-check-label" for="check_autonomo" style="
+		  								    position: absolute;
+										    top: 10px;
+										    left: 30px;
+										    margin-left: 20px;
+										    font-size: 24px;
+										    cursor: pointer;">
+		    								Autônomo
+		  								</label>
+									</div>
+							 </div>
+						</div>
+
+
+
 						<div class="row mrg--0">
 
 							<div class="col-xl-6 col-lg-6">
 								<input type="text" name="creci" class="creci" placeholder="CRECI">
 							</div>
 							<div class="col-xl-6 col-lg-6">
-								<input type="text" name="imobiliaria" class="imobiliaria" placeholder="Imobiliária">
+								<input type="text" name="imobiliaria" id="imobiliaria" class="imobiliaria" placeholder="Imobiliária">
 							</div>
 						</div>
 
@@ -152,7 +205,7 @@
 								<input type="text" name="telefone" class="telefone" placeholder="Telefone">
 							</div>
 							<div class="col-xl-6 col-lg-6">
-								<input type="text" name="cnpj" class="cnpj" placeholder="CNPJ">
+								<input type="text" name="cnpj" id="cnpj_cpf" class="cnpj" placeholder="CNPJ">
 							</div>
 						</div>
 
@@ -273,6 +326,12 @@
 					</div>
 
 				</div>
+
+
+
+
+
+
 			</div>
 		</div>		
 	</section>

@@ -306,7 +306,8 @@
 
 			$query = $this->db->select("*")
 				->from("tb_empreendimento_obra")
-				->where("cd_empreendimento", $cd_empreendimento );
+				->where("cd_empreendimento", $cd_empreendimento )
+				->order_by('ds_posicao', 'ASC');
 
 			return $query->get()->result_array();			
 		}

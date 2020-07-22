@@ -4,6 +4,28 @@ $(function(){
     $('input[name="celular"]').mask('(99) 99999-9999');
     $('#vl_empreendimento').maskMoney();
 
+    if($("#antiga_imobiliaria").val()) {
+    var nome_imobiliaria = $("#antiga_imobiliaria").val();
+    if(nome_imobiliaria == "Autônomo"){
+        $("#imobiliaria").prop("readonly", true);
+        $("#cnpj").mask('999.999.999-99');
+      }
+    }
+
+    $('#check_imobiliaria').click(function(){
+      var nome = $("#antiga_imobiliaria").val();
+      $('#imobiliaria').val(nome);
+      $("#imobiliaria").prop("readonly", false);
+      $('#cnpj').mask('99.999.999/9999-99');
+    });
+
+    $('#check_autonomo').click(function(){
+      $('#imobiliaria').val("Autônomo");
+      $("#imobiliaria").prop("readonly", true);
+      $("#cnpj").mask('999.999.999-99');
+    });
+
+
     $('.input').focus(function(){
       $(this).prev().addClass('on-focus');
     }).blur(function(){
@@ -635,6 +657,16 @@ $(function(){
     $('.fundo-preto-exclir-lazer , .bloco-exclir-lazer .salvar').click(function(){
       $('.fundo-preto-exclir-lazer').fadeOut();
       $('.bloco-exclir-lazer').fadeOut();
+    });
+
+
+    $('#tabela').change(function(){
+      var permitido = /(\.pdf|\.doc)$/i;
+      if( !permitido.exec( $(this).val() ) ){
+        $(this).val('');
+        $('#tabela-error').html('*Somente permitido arquivo no formado PDF ou DOC');
+        $('#tabela-error').css({'color':'red'});
+      }
     });
 
 

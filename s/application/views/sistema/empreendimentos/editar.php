@@ -796,32 +796,32 @@
 
                                     <label for="bloc_foto_obra_posicao[<?php echo $obr['cd_empreendimento_obra']; ?>]" class="padrao">Posição:</label>
                                     <select id="bloc_foto_obrar_posicao<?php echo $obr['cd_empreendimento_obra']; ?>" name="bloc_foto_obra_posicao[<?php echo $obr['cd_empreendimento_obra']; ?>]" style="padding-left: 85px;">
-                                        <option value="1" <?php if($obr['ds_posicao']=="1"){ echo "selected";}?> >
-                                            1
+                                        <option value="01" <?php if($obr['ds_posicao']=="01"){ echo "selected";}?> >
+                                            01
                                         </option>
-                                        <option value="2" <?php if($obr['ds_posicao']=="2"){ echo "selected";}?> >
-                                            2
+                                        <option value="02" <?php if($obr['ds_posicao']=="02"){ echo "selected";}?> >
+                                            02
                                         </option>
-                                        <option value="3" <?php if($obr['ds_posicao']=="3"){ echo "selected";}?> >
-                                            3
+                                        <option value="03" <?php if($obr['ds_posicao']=="03"){ echo "selected";}?> >
+                                            03
                                         </option>
-                                        <option value="4" <?php if($obr['ds_posicao']=="4"){ echo "selected";}?> >
-                                            4
+                                        <option value="04" <?php if($obr['ds_posicao']=="04"){ echo "selected";}?> >
+                                            04
                                         </option>
-                                        <option value="5" <?php if($obr['ds_posicao']=="5"){ echo "selected";}?> >
-                                            5
+                                        <option value="05" <?php if($obr['ds_posicao']=="05"){ echo "selected";}?> >
+                                            05
                                         </option>
-                                        <option value="6" <?php if($obr['ds_posicao']=="6"){ echo "selected";}?> >
-                                            6
+                                        <option value="06" <?php if($obr['ds_posicao']=="06"){ echo "selected";}?> >
+                                            06
                                         </option>
-                                        <option value="7" <?php if($obr['ds_posicao']=="7"){ echo "selected";}?> >
-                                            7
+                                        <option value="07" <?php if($obr['ds_posicao']=="07"){ echo "selected";}?> >
+                                            07
                                         </option>
-                                        <option value="8" <?php if($obr['ds_posicao']=="8"){ echo "selected";}?> >
-                                            8
+                                        <option value="08" <?php if($obr['ds_posicao']=="08"){ echo "selected";}?> >
+                                            08
                                         </option>
-                                        <option value="9" <?php if($obr['ds_posicao']=="9"){ echo "selected";}?> >
-                                            9
+                                        <option value="09" <?php if($obr['ds_posicao']=="09"){ echo "selected";}?> >
+                                            09
                                         </option>
                                         <option value="10" <?php if($obr['ds_posicao']=="10"){ echo "selected";}?> >
                                             10
@@ -868,32 +868,32 @@
 
                                     <label for="novo_foto_obra_posicao" class="padrao">Posição:</label>
                                     <select id="novo_foto_obrar_posicao" name="novo_foto_obra_posicao" style="padding-left: 85px;">
-                                        <option value="1" >
-                                            1
+                                        <option value="01" >
+                                            01
                                         </option>
-                                        <option value="2" >
-                                            2
+                                        <option value="02" >
+                                            02
                                         </option>
-                                        <option value="3" >
-                                            3
+                                        <option value="03" >
+                                            03
                                         </option>
-                                        <option value="4" >
-                                            4
+                                        <option value="04" >
+                                            04
                                         </option>
-                                        <option value="5" >
-                                            5
+                                        <option value="05" >
+                                            05
                                         </option>
-                                        <option value="6" >
-                                            6
+                                        <option value="06" >
+                                            06
                                         </option>
-                                        <option value="7" >
-                                            7
+                                        <option value="07" >
+                                            07
                                         </option>
-                                        <option value="8" >
-                                            8
+                                        <option value="08" >
+                                            08
                                         </option>
-                                        <option value="9" >
-                                            9
+                                        <option value="09" >
+                                            09
                                         </option>
                                         <option value="10" >
                                             10
