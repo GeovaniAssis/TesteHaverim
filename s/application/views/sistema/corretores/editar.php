@@ -85,6 +85,7 @@
                     <div class="col-lg-6">
                         <label for="cnpj" class="padrao">C.N.P.J./C.P.F.:</label>
                         <input id="cnpj" name="cnpj" type="text" value="<?php echo $corretore[0]["ds_cnpj"]; ?>" required style="padding-left: 110px;">  
+                        <label for="cnpj" id="errorcnpj" style="display: none; color: red;"></label>
                     </div>
                     <div class="col-lg-6">
                         <label for="creci" class="padrao">CRECI:</label>

@@ -30,14 +30,9 @@ $(function(){
 		});
 
 
-		var CPF_CNPJ = $("#cnpj_cpf");
+		function validar_cpf_cnpj(cpf_cnpj) {
 
-		$(function() {
-
-		    CPF_CNPJ.keyup(function(){
-
-		    	var val = CPF_CNPJ.val();
-		    	console.log(val);
+		    	var val = cpf_cnpj.val();
 
 		    	if (val.length == 14) {
 			        var cpf = val.trim;
@@ -157,9 +152,7 @@ $(function(){
 		        return false;
 		    }
 
-   			});
-		});
-
+		}
 	
 	// CARROSSEL
 		$('#linha-tempo').owlCarousel({
@@ -700,12 +693,144 @@ $(function(){
 			}
 		});
 
+
+	// VALIDAÇÃO DE CPF E CNPJ
+
+		function validar_cpf_cnpj(val) {
+		    	if (val.length == 14) {
+			        var cpf = val.trim();
+			     
+			        cpf = cpf.toString().replace(/\./g, '');
+			        cpf = cpf.toString().replace('-', '');
+			        cpf = cpf.split('');
+
+			        var v1 = 0;
+			        var v2 = 0;
+			        var aux = false;
+			        
+			        for (var i = 1; cpf.length > i; i++) {
+			            if (cpf[i - 1] != cpf[i]) {
+			                aux = true;   
+			            }
+			        } 
+			        
+			        if (aux == false) {
+			            return false; 
+			        } 
+			        
+			        for (var i = 0, p = 10; (cpf.length - 2) > i; i++, p--) {
+			            v1 += cpf[i] * p; 
+			        } 
+			        
+			        v1 = ((v1 * 10) % 11);
+			        
+			        if (v1 == 10) {
+			            v1 = 0; 
+			        }
+			        
+			        if (v1 != cpf[9]) {
+			            return false; 
+			        } 
+			        
+			        for (var i = 0, p = 11; (cpf.length - 1) > i; i++, p--) {
+			            v2 += cpf[i] * p; 
+			        } 
+			        
+			        v2 = ((v2 * 10) % 11);
+			        
+			        if (v2 == 10) {
+			            v2 = 0; 
+			        }
+			        
+			        if (v2 != cpf[10]) {
+			            return false; 
+			        } else {   
+			            return true; 
+			        }
+
+		    } else if (val.length == 18) {
+		        var cnpj = val.trim();
+
+		        cnpj = cnpj.toString().replace(/\./g, '');
+		        cnpj = cnpj.toString().replace('-', '');
+		        cnpj = cnpj.toString().replace('/', ''); 
+		        cnpj = cnpj.split(''); 
+
+		        var v1 = 0;
+		        var v2 = 0;
+		        var aux = false;
+		        
+		        for (var i = 1; cnpj.length > i; i++) { 
+		            if (cnpj[i - 1] != cnpj[i]) {  
+		                aux = true;   
+		            } 
+		        } 
+		        
+		        if (aux == false) {  
+		            return false; 
+		        }
+		        
+		        for (var i = 0, p1 = 5, p2 = 13; (cnpj.length - 2) > i; i++, p1--, p2--) {
+		            if (p1 >= 2) {  
+		                v1 += cnpj[i] * p1;  
+		            } else {  
+		                v1 += cnpj[i] * p2;  
+		            } 
+		        } 
+		        
+		        v1 = (v1 % 11);
+		        
+		        if (v1 < 2) { 
+		            v1 = 0; 
+		        } else { 
+		            v1 = (11 - v1); 
+		        } 
+		        
+		        if (v1 != cnpj[12]) {  
+		            return false; 
+		        } 
+		        
+		        for (var i = 0, p1 = 6, p2 = 14; (cnpj.length - 1) > i; i++, p1--, p2--) { 
+		            if (p1 >= 2) {  
+		                v2 += cnpj[i] * p1;  
+		            } else {   
+		                v2 += cnpj[i] * p2; 
+		            } 
+		        }
+		        
+		        v2 = (v2 % 11); 
+		        
+		        if (v2 < 2) {  
+		            v2 = 0;
+		        } else { 
+		            v2 = (11 - v2); 
+		        } 
+		        
+		        if (v2 != cnpj[13]) {   
+		            return false; 
+		        } else {  
+		            return true; 
+		        }
+		    } else {
+		        return false;
+		    }
+
+		}
+
+
+		$.validator.addMethod("cpf_cnpj", function(value, element) {
+		   return this.optional(element) || validar_cpf_cnpj(value);
+		 }, "Username must contain only letters, numbers, or dashes.");
+
+	// VALIDAÇÃO DE CPF E CNPJ
+
+
 		$('#form-cadastrar-tabela').validate({
 			rules: {
 				creci: { required: true, minlength: 3 },
 				imobiliaria: { required: true, minlength: 3 },
 				telefone: { required: true, minlength: 14 },
-				cnpj: { required: true, maxlength: 18, minlength: 11 },
+				cnpj: { required: true, maxlength: 18, minlength: 11, cpf_cnpj: true },
 				responsavel: { required: true, minlength: 3 },
 				endereco: { required: true, minlength: 5 },
 				numero: { required: true },
@@ -719,7 +844,7 @@ $(function(){
 				creci: { required: 'Informe o CRECI da imobiliaria', minlength: 'No mínimo 3 caracteres' },
 				imobiliaria: { required: 'Informe o nome da imobiliaria.', minlength: 'No mínimo 3 caracteres' },
 				telefone: { required: 'Informe o telefone de contato', minlength: 'No mínimo 14 caracteres' },
-				cnpj: { required: 'Informe o CNPJ/CPF corretamente', maxlength: 'No máximo 18 caractéres', minlength: 'No mínimo 11 caracteres' },
+				cnpj: { required: 'Informe o CNPJ/CPF corretamente', maxlength: 'No máximo 18 caractéres', minlength: 'No mínimo 11 caracteres', cpf_cnpj: 'CPF/CNPJ está inválido' },
 				responsavel: { required: 'Informe o responsável pela imobiliaria', minlength: 'No mínimo 3 caracteres' },
 				endereco: { required: 'Informe o endereço da imobiliaria', minlength: 'No mínimo 5 caracteres' },
 				numero: { required: 'Informe o número do local' },
